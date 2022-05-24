@@ -1,19 +1,30 @@
-import { StyleSheet } from "react-native";
+import { useContext } from "react";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import { Text, View } from "../components/Themed";
-import { RootTabScreenProps } from "../types";
+import { SideContext } from "../components/XOSideProvider";
+import { RootStackScreenProps } from "../types";
 
 export default function ChooseXOScreen({
   navigation,
-}: RootTabScreenProps<"Game">) {
+}: RootStackScreenProps<"ChooseXO">) {
+  const context = useContext(SideContext);
+  const choose = (side: "X" | "O") => {
+    context?.chooseSide(side);
+    navigation.navigate("Board");
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Choose your side</Text>
       <View style={styles.xoContainer}>
         <View style={[styles.column, styles.marginRight]}>
-          <Text style={styles.side}>X</Text>
+          <TouchableOpacity onPress={() => choose("X")}>
+            <Text style={styles.side}>X</Text>
+          </TouchableOpacity>
         </View>
         <View style={styles.column}>
-          <Text style={styles.side}>O</Text>
+          <TouchableOpacity onPress={() => choose("O")}>
+            <Text style={styles.side}>O</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>

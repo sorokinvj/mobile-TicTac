@@ -20,6 +20,7 @@ import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import GameScreen from "../screens/GameScreen";
 import ChooseXOScreen from "../screens/ChooseXOScreen";
+import BoardScreen from "../screens/BoardScreen";
 import TabTwoScreen from "../screens/TabTwoScreen";
 import {
   RootStackParamList,
@@ -63,7 +64,7 @@ function RootNavigator() {
         options={{ title: "Oops!" }}
       />
       <Stack.Screen name="ChooseXO" component={ChooseXOScreen} />
-
+      <Stack.Screen name="Board" component={BoardScreen} />
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group>
