@@ -11,7 +11,6 @@ export default function BoardScreen({
 }: RootStackScreenProps<"Board">) {
   const sideContext = useContext(SideContext);
   const [squaresArray, setSquaresArray] = React.useState(Array(9).fill(null));
-  const [currentMove, setCurrentMove] = React.useState("x");
   const [result, setResult] = React.useState("unknown");
 
   if (!sideContext?.side) {
@@ -25,7 +24,6 @@ export default function BoardScreen({
         currentMove={sideContext?.side}
         setSquaresArray={setSquaresArray}
         setResult={setResult}
-        setCurrentMove={setCurrentMove}
       />
       <GameField
         setSquaresArray={setSquaresArray}

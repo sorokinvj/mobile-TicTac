@@ -8,7 +8,6 @@ interface Props {
   result: string;
   setSquaresArray: (squaresArray: string[]) => void;
   setResult: (result: string) => void;
-  setCurrentMove: (currentMove: string) => void;
 }
 
 const Announcement: React.FC<Props> = ({
@@ -16,12 +15,10 @@ const Announcement: React.FC<Props> = ({
   result,
   setSquaresArray,
   setResult,
-  setCurrentMove,
 }) => {
   function replayGame() {
     setResult("unknown");
     setSquaresArray(Array(9).fill(null));
-    setCurrentMove("x");
   }
 
   if (result === "unknown") {
@@ -38,6 +35,7 @@ const Announcement: React.FC<Props> = ({
       <Button
         onPress={replayGame}
         buttonStyle={styles.replayButton}
+        textStyle={styles.replayButtonText}
         title="replay"
       />
       <View style={styles.gameOver}>
@@ -68,7 +66,7 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
     margin: "0 auto",
   },
-  replayButtonTextL: {
+  replayButtonText: {
     fontSize: "1.3rem",
     textDecoration: "underline",
   },
